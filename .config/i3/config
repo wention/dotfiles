@@ -67,7 +67,8 @@ client.urgent           $darkred    $darkred    $black      $darkred    $darkred
 client.background       $black
 
 floating_modifier $mod
-bindsym $mod+Return exec --no-startup-id exec $scripts/fullscreen_wrap.sh $terminal
+bindsym $mod+Return exec --no-startup-id exec $terminal
+#bindsym $mod+Return exec --no-startup-id exec $scripts/fullscreen_wrap.sh $terminal
 bindsym $mod+Shift+Return exec --no-startup-id exec $scripts/fullscreen_wrap.sh $terminal --name __scratchpad
 
 bindsym $mod+q kill
@@ -75,18 +76,18 @@ bindsym $mod+q kill
 bindsym $mod+d exec --no-startup-id rofi -show run
 bindsym $mod+p exec --no-startup-id $scripts/gopass.sh
 
-bindsym $mod+Left focus left
-bindsym $mod+Right focus right
-bindsym $mod+Up focus up
-bindsym $mod+Down focus down
+bindsym $mod+h focus left
+bindsym $mod+l focus right
+bindsym $mod+j focus up
+bindsym $mod+k focus down
 
-bindsym $mod+Shift+Left move left 35px
-bindsym $mod+Shift+Down move down 35px
-bindsym $mod+Shift+Up move up 35px
-bindsym $mod+Shift+Right move right 35px
+bindsym $mod+Shift+h move left 35px
+bindsym $mod+Shift+l move down 35px
+bindsym $mod+Shift+j move up 35px
+bindsym $mod+Shift+k move right 35px
 
-bindsym $mod+h split h
-bindsym $mod+v split v
+bindsym $mod+Control+h split h
+bindsym $mod+Control+v split v
 
 # Until I figure out a better way to use this key
 bindsym Hyper_L fullscreen
@@ -179,12 +180,12 @@ mode "$mode_resize" {
 set $mode_power power
 bindsym Mod1+Control+l mode "$mode_power"
 mode "$mode_power" {
-    bindsym l mode "default", exec --no-startup-id $HOME/.i3/i3exit lock
-    bindsym e mode "default", exec --no-startup-id $HOME/.i3/i3exit logout
-    bindsym s mode "default", exec --no-startup-id $HOME/.i3/i3exit suspend
-    bindsym h mode "default", exec --no-startup-id $HOME/.i3/i3exit hibernate
-    bindsym r mode "default", exec --no-startup-id $HOME/.i3/i3exit reboot
-    bindsym p mode "default", exec --no-startup-id $HOME/.i3/i3exit shutdown
+    bindsym l mode "default", exec --no-startup-id $scripts/i3exit lock
+    bindsym e mode "default", exec --no-startup-id $scripts/i3exit logout
+    bindsym s mode "default", exec --no-startup-id $scripts/i3exit suspend
+    bindsym h mode "default", exec --no-startup-id $scripts/i3exit hibernate
+    bindsym r mode "default", exec --no-startup-id $scripts/i3exit reboot
+    bindsym p mode "default", exec --no-startup-id $scripts/i3exit shutdown
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -238,21 +239,21 @@ mode "$mode_gaps_outer" {
 set $mode_brightness brightness
 bindsym $mod+Shift+b mode "$mode_brightness"
 mode "$mode_brightness" {
-    bindsym plus  exec --no-startup-id ${HOME}/scripts/backlight.sh -time 50 -inc 10
-    bindsym minus exec --no-startup-id ${HOME}/scripts/backlight.sh -time 50 -dec 10
-    bindsym Shift+plus  exec --no-startup-id ${HOME}/scripts/backlight.sh -time 50 -inc 1
-    bindsym Shift+minus exec --no-startup-id ${HOME}/scripts/backlight.sh -time 50 -dec 1
+    bindsym plus  exec --no-startup-id $scripts/backlight.sh -time 50 -inc 10
+    bindsym minus exec --no-startup-id $scripts/backlight.sh -time 50 -dec 10
+    bindsym Shift+plus  exec --no-startup-id $scripts/backlight.sh -time 50 -inc 1
+    bindsym Shift+minus exec --no-startup-id $scripts/backlight.sh -time 50 -dec 1
 
-    bindsym 0     mode "default", exec --no-startup-id ${HOME}/scripts/backlight.sh -time 50 -set 100
-    bindsym 1     mode "default", exec --no-startup-id ${HOME}/scripts/backlight.sh -time 50 -set 10
-    bindsym 2     mode "default", exec --no-startup-id ${HOME}/scripts/backlight.sh -time 50 -set 20
-    bindsym 3     mode "default", exec --no-startup-id ${HOME}/scripts/backlight.sh -time 50 -set 30
-    bindsym 4     mode "default", exec --no-startup-id ${HOME}/scripts/backlight.sh -time 50 -set 40
-    bindsym 5     mode "default", exec --no-startup-id ${HOME}/scripts/backlight.sh -time 50 -set 50
-    bindsym 6     mode "default", exec --no-startup-id ${HOME}/scripts/backlight.sh -time 50 -set 60
-    bindsym 7     mode "default", exec --no-startup-id ${HOME}/scripts/backlight.sh -time 50 -set 70
-    bindsym 8     mode "default", exec --no-startup-id ${HOME}/scripts/backlight.sh -time 50 -set 80
-    bindsym 9     mode "default", exec --no-startup-id ${HOME}/scripts/backlight.sh -time 50 -set 90
+    bindsym 0     mode "default", exec --no-startup-id $scripts/backlight.sh -time 50 -set 100
+    bindsym 1     mode "default", exec --no-startup-id $scripts/backlight.sh -time 50 -set 10
+    bindsym 2     mode "default", exec --no-startup-id $scripts/backlight.sh -time 50 -set 20
+    bindsym 3     mode "default", exec --no-startup-id $scripts/backlight.sh -time 50 -set 30
+    bindsym 4     mode "default", exec --no-startup-id $scripts/backlight.sh -time 50 -set 40
+    bindsym 5     mode "default", exec --no-startup-id $scripts/backlight.sh -time 50 -set 50
+    bindsym 6     mode "default", exec --no-startup-id $scripts/backlight.sh -time 50 -set 60
+    bindsym 7     mode "default", exec --no-startup-id $scripts/backlight.sh -time 50 -set 70
+    bindsym 8     mode "default", exec --no-startup-id $scripts/backlight.sh -time 50 -set 80
+    bindsym 9     mode "default", exec --no-startup-id $scripts/backlight.sh -time 50 -set 90
 
     bindsym Return mode "default"
     bindsym Escape mode "default"

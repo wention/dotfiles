@@ -1,0 +1,58 @@
+
+separator=false
+separator_block_width=5
+border_top=0
+border_left=0
+border_right=0
+border_bottom=2
+
+[output]
+command=$HOME/.config/i3/scripts/monitor.sh
+interval=60
+signal=4
+
+[updates]
+command=$HOME/.config/i3/scripts/updates.sh
+interval=60
+signal=3
+urgent=true
+
+[volume]
+label=  
+command=[[ -z "${BLOCK_BUTTON}" ]] || ( [[ "${BLOCK_BUTTON}" == "1" ]] && ((/usr/bin/pavucontrol -t 3 --name "pavucontrol-bar" || true) && $HOME/.config/i3/scripts/volume_control.py signal) || $HOME/.config/i3/scripts/volume_control.py toggle ); echo $($HOME/.config/i3/scripts/volume_control.py i3blocks)
+interval=5
+signal=1
+markup=pango
+border=#cc241d
+
+[brightness]
+label=  
+command=echo $(printf "%.0f " $(xbacklight -get))
+interval=10
+signal=2
+border=#d79921
+
+[temperature]
+label=  
+command=echo "$($HOME/.config/i3/temperature.sh 'Core 0') $($HOME/.config/i3/scripts/temperature.sh 'Core 1') "
+interval=5
+border=#b16286
+
+[wireless]
+label=  
+command=[[ -z "$(iwgetid -r)" ]] || echo "$(iwgetid -r) "
+interval=2
+border=#98971a
+
+[battery]
+command=$HOME/.config/i3/scripts/battery.sh
+interval=persist
+border=#458588
+
+[time]
+label=  
+command=echo "`date +'%a %d %b'` <b>`date +'%T'`</b> "; [[ -z "${BLOCK_BUTTON}" ]] || gsimplecal &
+interval=1
+markup=pango
+border=#928374
+separator_block_width=0
