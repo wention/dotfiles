@@ -244,18 +244,14 @@ function M.config()
     end
 
     -- C/C++
-    -- lspconfig.clangd.setup {
-    --     on_attach = on_attach,
-    --     capabilities = capabilities,
-    --     flags = {debounce_text_changes = 150}
-    -- }
+    lspconfig.clangd.setup {
+        on_attach = on_attach,
+        capabilities = capabilities,
+        flags = {debounce_text_changes = 150}
+    }
 
     -- Python
     lspconfig.pyright.setup {
-        root_dir = function(fname)
-            return util.root_pattern(".git", "setup.py",  "setup.cfg", "pyproject.toml", "requirements.txt")(fname) or
-              util.path.dirname(fname)
-        end,
         on_attach = on_attach,
         capabilities = capabilities,
         flags = {debounce_text_changes = 150}
