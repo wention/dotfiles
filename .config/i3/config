@@ -57,7 +57,7 @@ focus_on_window_activation urgent
 floating_minimum_size -1 x -1
 floating_maximum_size -1 x -1
 
-font pango:monospace 8
+font pango:DejaVuSansMono Nerd Font 8
 
 #                       BORDER      BACKGROUND  TEXT        INDICATOR   CHILD_BORDER
 client.focused          $black      $black      $darkwhite  $darkblack  $darkblack
