@@ -1,0 +1,54 @@
+# vim: set ts=2 sw=2 tw=2 expandtab: 
+env:
+  TERM: alacritty
+
+window:
+  padding:
+    x: 0
+    y: 0
+
+  startup_mode: Windowed
+  title: Alacritty
+
+  # Allow terminal applications to change Alacritty's window title.
+  dynamic_title: true
+  class:
+    instance: Alacritty
+    general: Alacritty
+  scrolling:
+    history: 10000
+    multiplier: 3
+  font:
+    normal:
+      family: DejaVuSansMono Nerd Font
+      style: Regular
+
+    size: 13
+  background_opacity: 0.75
+  cursor:
+    style:
+      # Cursor shape
+      #
+      # Values for `shape`:
+      #   - ▇ Block
+      #   - _ Underline
+      #   - | Beam
+      shape: Block
+      # Cursor blinking state
+      #
+      # Values for `blinking`:
+      #   - Never: Prevent the cursor from ever blinking
+      #   - Off: Disable blinking by default
+      #   - On: Enable blinking by default
+      #   - Always: Force the cursor to always blink
+      blinking: On
+
+    # Vi mode cursor style
+    vi_mode_style: true
+    # Cursor blinking interval in milliseconds.
+    blink_interval: 750
+    unfocused_hollow: true
+    #thickness: 0.15
+  mouse:
+    hide_when_typing: false
+  #key_bindings:
