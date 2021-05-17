@@ -159,9 +159,8 @@ return require('packer').startup(function(use)
   -- use {"romgrk/barbar.nvim", opt = true}
   use {
       'akinsho/nvim-bufferline.lua',
-      disable = true,
       event = {'VimEnter'},
-      --config = require('config.nvim_bufferline').config,
+      config = require('config.nvim_bufferline').config,
       requires = {'kyazdani42/nvim-web-devicons', opt = true},
   }
 
