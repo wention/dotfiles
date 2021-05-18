@@ -38,7 +38,7 @@ set $ws8  "8:  "
 set $ws9  "9:  "
 set $ws10 "10:  "
 
-set $default_gaps_inner 0
+set $default_gaps_inner 10
 set $default_gaps_outer 0
 gaps inner $default_gaps_inner
 gaps outer $default_gaps_outer
@@ -297,7 +297,7 @@ bar {
     status_command i3blocks
     i3bar_command i3bar -t
     position top
-    font pango:Hack, FontAwesome 12
+    font pango:DejaVuSansMono Nerd Font, FontAwesome 12
     strip_workspace_numbers yes
     separator_symbol "■"
     bindsym button4 nop
@@ -305,7 +305,7 @@ bar {
     tray_output primary
 #    tray_output eDP1
     tray_padding 0
-    height $height
+    height 24
     colors {
         statusline         $white
         background         $transparent
