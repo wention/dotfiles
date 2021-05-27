@@ -3,24 +3,17 @@ vim.o.runtimepath = '/Users/wention/.config/nvim-lua,' .. vim.o.runtimepath
 local install_path = vim.fn.stdpath('data') .. '/site/pack/packer/opt/packer.nvim'
 
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-    vim.cmd ('!git clone https://github.com/wbthomason/packer.nvim' .. ' ' ..
+    vim.cmd('!git clone https://github.com/wbthomason/packer.nvim' .. ' ' ..
                 install_path)
 end
-vim.cmd [[packadd packer.nvim]]
+vim.cmd 'packadd packer.nvim'
 -- auto compile
-vim.cmd [[autocmd BufWritePost plugins.lua PackerCompile]]
+vim.cmd 'autocmd BufWritePost plugins.lua PackerCompile'
 
 
 return require('packer').startup(function(use)
   -- Packer can manage itself
   use {'wbthomason/packer.nvim', opt = true}
-
-  use {
-      'disrupted/one-nvim', -- personal tweaked colorscheme
-      config = function()
-          vim.cmd 'colorscheme one-nvim'
-      end,
-  }
 
   -- Treesitter
   use {
@@ -56,7 +49,8 @@ return require('packer').startup(function(use)
       'lewis6991/gitsigns.nvim',
       event = { 'BufReadPre', 'BufNewFile' },
       config = require('config/gitsigns').config,
-      requires = { 'nvim-lua/plenary.nvim' }
+      requires = { 'nvim-lua/plenary.nvim' },
+      disable = true
   }
 
   -- use {'liuchengxu/vim-which-key', opt = true}
@@ -155,7 +149,7 @@ return require('packer').startup(function(use)
       setup = require('config/telescope').setup,
       config = require('config/telescope').config,
       requires = {
-          {'nvim-lua/popup.nvim'}, 
+          {'nvim-lua/popup.nvim'},
           {'nvim-lua/plenary.nvim'}
       }
   }
@@ -165,7 +159,8 @@ return require('packer').startup(function(use)
       after = {'telescope.nvim'},
       config = function()
           require('telescope').load_extension('fzy_native')
-      end
+      end,
+      disable = true
   }
 
   --[[
@@ -212,6 +207,13 @@ return require('packer').startup(function(use)
   -- Color
   use {'christianchiarulli/nvcode-color-schemes.vim', opt = true}
 
+  use {
+      'disrupted/one-nvim', -- personal tweaked colorscheme
+      config = function()
+          vim.cmd 'colorscheme one-nvim'
+      end,
+  }
+
   -- Icons
 
   -- Status Line and Bufferline
@@ -245,7 +247,6 @@ return require('packer').startup(function(use)
       event = { 'VimEnter' },
       config = require('config/barbar').config,
       requires = { 'kyazdani42/nvim-web-devicons', opt = true },
-      disable = true
   }
 
   end

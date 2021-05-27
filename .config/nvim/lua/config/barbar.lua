@@ -1,6 +1,7 @@
 local M = {}
 
 function M.config()
+    --[[
     vim.g.bufferline = {
         -- Enable/disable animations
         animation = false,
@@ -33,8 +34,33 @@ function M.config()
         -- Sets the maximum padding width with which to surround each tab
         maximum_padding = 2,
     }
+    ]]
     local opts = { noremap = true, silent = true }
-    vim.api.nvim_set_keymap('n', '<Leader>x', '<cmd>BufferDelete<CR>', opts)
+    -- Move to previous/next
+    vim.api.nvim_set_keymap('n', '<A-[>', '<cmd>BufferPrevious<CR>', opts)
+    vim.api.nvim_set_keymap('n', '<A-]>', '<cmd>BufferPrevious<CR>', opts)
+    -- Re-order to previous/next
+    vim.api.nvim_set_keymap('n', '<A-{>', '<cmd>BufferPrevious<CR>', opts)
+    vim.api.nvim_set_keymap('n', '<A-}>', '<cmd>BufferPrevious<CR>', opts)
+    -- Goto buffer in position...
+    vim.api.nvim_set_keymap('n', '<Leader>1', '<cmd>BufferGoto 1<CR>', opts)
+    vim.api.nvim_set_keymap('n', '<Leader>2', '<cmd>BufferGoto 2<CR>', opts)
+    vim.api.nvim_set_keymap('n', '<Leader>3', '<cmd>BufferGoto 3<CR>', opts)
+    vim.api.nvim_set_keymap('n', '<Leader>4', '<cmd>BufferGoto 4<CR>', opts)
+    vim.api.nvim_set_keymap('n', '<Leader>5', '<cmd>BufferGoto 5<CR>', opts)
+    vim.api.nvim_set_keymap('n', '<Leader>6', '<cmd>BufferGoto 6<CR>', opts)
+    vim.api.nvim_set_keymap('n', '<Leader>7', '<cmd>BufferGoto 7<CR>', opts)
+    vim.api.nvim_set_keymap('n', '<Leader>8', '<cmd>BufferGoto 8<CR>', opts)
+    vim.api.nvim_set_keymap('n', '<Leader>9', '<cmd>BufferGoto 9<CR>', opts)
+    vim.api.nvim_set_keymap('n', '<Leader>0', '<cmd>BufferLast<CR>', opts)
+    -- Close buffer
+    vim.api.nvim_set_keymap('n', '<Leader>x', '<cmd>BufferClose<CR>', opts)
+    vim.api.nvim_set_keymap('n', '<Leader>X', '<cmd>BufferCloseAllButCurrent<CR>', opts)
+
+    -- Magic buffer-picking mode
+    vim.api.nvim_set_keymap('n', '<Leader>p', '<cmd>BufferPick<CR>', opts)
+
+
 end
 
 return M

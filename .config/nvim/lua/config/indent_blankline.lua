@@ -1,13 +1,13 @@
 local M = {}
 
 function M.setup()
-    vim.g.indent_blankline_char = '│'
-    --vim.g.indent_blankline_char = ''
+    -- line char: ┆, , │, 
+    vim.g.indent_blankline_char = '┆'
     vim.g.indent_blankline_show_current_context = true
     vim.g.indent_blankline_indent_level = 10
     vim.g.indent_blankline_use_treesitter = true
-    vim.g.indent_blankline_filetype_exclude = {'help', 'man', 'packer'}
-    vim.g.indent_blankline_buftype_exclude = {'terminal', 'packer', 'NvimTree', 'Outline'}
+    vim.g.indent_blankline_filetype_exclude = {'help', 'man', 'packer', 'NvimTree', 'Outline'}
+    vim.g.indent_blankline_buftype_exclude = {'terminal'}
     vim.g.indent_blankline_bufname_exclude = {'README.md'}
     vim.g.indent_blankline_context_patterns = {
         "class",

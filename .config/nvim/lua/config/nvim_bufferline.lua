@@ -62,12 +62,10 @@ function M.config()
         }
     }
     
-    vim.cmd = [[
-        vim.api.nvim_set_keymap('n', '<TAB>', ':BufferNext<CR>', { noremap = true, silent = true })
-        vim.api.nvim_set_keymap('n', '<S-TAB>', ':BufferPrevious<CR>', { noremap = true, silent = true })
-        vim.api.nvim_set_keymap('n', '<S-x>', ':BufferClose<CR>', { noremap = true, silent = true })
-    ]]
-
+    local opts = { noremap = true, silent = true }
+    vim.api.nvim_set_keymap('n', '<Leader>[', ':BufferPrevious<CR>', opts)
+    vim.api.nvim_set_keymap('n', '<Leader>]', ':BufferNext<CR>', opts)
+    vim.api.nvim_set_keymap('n', '<Leader>x', ':BufferClose<CR>', opts)
 end
 
 return M

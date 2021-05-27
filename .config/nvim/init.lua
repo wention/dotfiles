@@ -2,7 +2,6 @@ local utils = require "utils"
 local helper = require "vim_helper"
 
 -------------------- HELPERS -------------------------------
-local cmd = vim.cmd  -- to execute Vim commands e.g. cmd('pwd')
 local fn = vim.fn    -- to call Vim functions e.g. fn.bufnr()
 local g = vim.g      -- a table to access global variables
 local scopes = {o = vim.o, b = vim.bo, w = vim.wo}
@@ -13,7 +12,7 @@ local ENV_HOME = os.getenv('HOME')
 -----------------------------------------------------------------------------//
 -- Basics
 -----------------------------------------------------------------------------//
-if fn.has("multi_byte") then
+if fn.has("multi_byte") == 1 then
     -- Let Vim use utf-8 internally, because many scripts require this
     opt.encoding = "utf-8"
     opt.fileencoding = "utf-8"
@@ -28,16 +27,16 @@ end
 -----------------------------------------------------------------------------//
 -- General
 -----------------------------------------------------------------------------//
-cmd [[filetype plugin indent on]]
-cmd [[syntax on]]
+vim.cmd 'filetype plugin indent on'
+vim.cmd 'syntax on'
 
 -- cmd [[scriptencoding utf-8]]
-vim.o.mouse = "a"
+vim.o.mouse = 'a'
 vim.o.history = 1000
 vim.o.clipboard = 'unnamedplus'
 
 -- Trim trailing whitespace and trailing blank lines on save
-cmd [[
+vim.cmd [[
     function TrimWhitespace()
         let l:save = winsaveview()
         keeppatterns %s/\s\+$//e
@@ -126,7 +125,7 @@ vim.o.showmode = true
 -----------------------------------------------------------------------------//
 vim.o.background = "dark"
 vim.o.termguicolors = true
-cmd [[colorscheme badwolf]]
+vim.cmd 'colorscheme badwolf'
 
 
 -----------------------------------------------------------------------------//
@@ -214,7 +213,7 @@ init_directories(ENV_HOME, 'nvim')
 -----------------------------------------------------------------------------//
 -- FileTypes
 -----------------------------------------------------------------------------//
-cmd [[
+vim.cmd [[
     autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
     autocmd FileType haskell,puppet,ruby,yml,html,css setlocal expandtab shiftwidth=2 softtabstop=2
     autocmd BufNewFile,BufRead *.coffee set filetype=coffee

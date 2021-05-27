@@ -40,7 +40,7 @@ function M.config()
         allow_prefix_unmatch = false,
         source = {
             path = { menu = '[PATH]', priority = 9 },
-            -- treesitter = {menu = '[TS]', priority = 9},
+            treesitter = {menu = '[TS]', priority = 9},
             buffer = { menu = '[BUF]', priority = 8 },
             nvim_lsp = { menu = '[LSP]', priority = 10, sort = true },
             nvim_lua = { menu = '[LUA]', priority = 6 },

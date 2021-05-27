@@ -40,8 +40,8 @@ map('n', 'x', '"_x') -- delete char without yank
 map('x', 'x', '"_x') -- delete visual selection without yank
 
 -- paste in visual mode and keep available
-map('x', 'p', '"_dP')
-map('x', 'P', '"_dP')
+-- map('x', 'p', '"_dP')
+-- map('x', 'P', '"_dP')
 
 --  ctrl + /: nohighlight
 map('n', '<C-_>', ':noh<CR>')
