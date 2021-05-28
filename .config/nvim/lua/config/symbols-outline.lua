@@ -1,9 +1,6 @@
 local M = {}
 
 function M.setup()
-    local opts = { noremap = true, silent = true }
-    vim.api.nvim_set_keymap('n', '<Leader>t', '<cmd>SymbolsOutline<CR>', opts)
-
     vim.g.symbols_outline = {
         highlight_hovered_item = true,
         show_guides = true,
@@ -23,6 +20,10 @@ end
 
 function M.config()
     require('symbols-outline').setup {}
+
+    local opts = { noremap = true, silent = true }
+    vim.api.nvim_set_keymap('n', '<Leader>t', '<cmd>SymbolsOutline<CR>', opts)
+
 end
 
 return M

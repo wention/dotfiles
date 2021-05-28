@@ -7,7 +7,7 @@ local g = vim.g      -- a table to access global variables
 local scopes = {o = vim.o, b = vim.bo, w = vim.wo}
 local execute = vim.api.nvim_command
 local opt = utils.opt
-local ENV_HOME = os.getenv('HOME')
+local HOME_DIR = os.getenv('HOME')
 
 -----------------------------------------------------------------------------//
 -- Basics
@@ -207,7 +207,7 @@ function init_directories(home, prefix)
     end
 end
 
-init_directories(ENV_HOME, 'nvim')
+init_directories(HOME_DIR, 'nvim')
 
 
 -----------------------------------------------------------------------------//

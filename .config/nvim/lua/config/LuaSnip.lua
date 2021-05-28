@@ -196,6 +196,12 @@ ls.snippets = {
             t { '', '}' },
         }),
     },
+    python = {
+        s({ trig = "coding" }, {
+    		t({ "# -*- coding: utf-8 -*-" }),
+    		i(0)
+        }),
+    },
     -- python = {
     --     s({trig = "def"}, {
     --         -- Simple static text.

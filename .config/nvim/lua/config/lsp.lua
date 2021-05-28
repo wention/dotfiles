@@ -197,19 +197,19 @@ function M.config()
     end
 
     -- Python
-    --[[
     lspconfig.pyright.setup {
         on_attach = on_attach,
         capabilities = capabilities,
         flags = {debounce_text_changes = 150}
     }
-    ]]
 
+    --[[
     lspconfig.pyls.setup {
         on_attach = on_attach,
         capabilities = capabilities,
         flags = {debounce_text_changes = 150}
     }
+    ]]
 
     -- YAML
     -- https://github.com/redhat-developer/yaml-language-server
@@ -262,6 +262,8 @@ function M.config()
         capabilities = capabilities,
         flags = { debounce_text_changes = 150 },
     }
+
+    lspconfig.vimls.setup {}
 
     -- LUA
     local system_name

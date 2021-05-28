@@ -45,18 +45,20 @@ return require('packer').startup(function(use)
       requires = {'kyazdani42/nvim-web-devicons'}
   }
 
+
   use {
       'lewis6991/gitsigns.nvim',
       event = { 'BufReadPre', 'BufNewFile' },
       config = require('config/gitsigns').config,
       requires = { 'nvim-lua/plenary.nvim' },
-      disable = true
   }
 
-  -- use {'liuchengxu/vim-which-key', opt = true}
   use {'folke/which-key.nvim', opt = true}
-  use {'ChristianChiarulli/dashboard-nvim', opt = true}
-  use {'kevinhwang91/nvim-bqf', opt = true}
+  use {
+      'kevinhwang91/nvim-bqf',
+      event = { 'BufWinEnter quickfix' },
+      config = require('config/nvim-bqf').config,
+  }
 
 
   use {
@@ -69,6 +71,15 @@ return require('packer').startup(function(use)
       event = { 'BufRead', 'BufNewFile' },
       config = require('config/surround').config,
   }
+
+  use {
+      'folke/trouble.nvim',
+      cmd = { 'Trouble', 'TroubleToggle' },
+      setup = require('config/trouble').setup,
+      config = require('config/trouble').config,
+      requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+  }
+
 
   use {
       'phaazon/hop.nvim',
@@ -205,13 +216,12 @@ return require('packer').startup(function(use)
   -------------------------------------------------------
 
   -- Color
-  use {'christianchiarulli/nvcode-color-schemes.vim', opt = true}
-
   use {
-      'disrupted/one-nvim', -- personal tweaked colorscheme
+      'npxbr/gruvbox.nvim',
       config = function()
-          vim.cmd 'colorscheme one-nvim'
+          vim.cmd 'colorscheme gruvbox'
       end,
+      requires = {'rktjmp/lush.nvim'}
   }
 
   -- Icons

@@ -1,6 +1,7 @@
 local M = {}
 
 function M.setup()
+    vim.cmd [[packadd nvim-web-devicons]]
     -- line char: ┆, , │, 
     vim.g.indent_blankline_char = '┆'
     vim.g.indent_blankline_show_current_context = true
