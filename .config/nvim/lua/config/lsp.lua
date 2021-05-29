@@ -197,19 +197,54 @@ function M.config()
     end
 
     -- Python
-    lspconfig.pyright.setup {
-        on_attach = on_attach,
-        capabilities = capabilities,
-        flags = {debounce_text_changes = 150}
-    }
+    -- lspconfig.pyright.setup {
+    --     on_attach = on_attach,
+    --     capabilities = capabilities,
+    --     flags = {debounce_text_changes = 150}
+    -- }
 
-    --[[
-    lspconfig.pyls.setup {
+    -- https://github.com/palantir/python-language-server
+    -- lspconfig.pyls.setup {
+    --     on_attach = on_attach,
+    --     cmd = {"pyls", "--log-file", "/tmp/pyls.log", "--verbose"},
+    --     capabilities = capabilities,
+    --     flags = {debounce_text_changes = 150},
+    --     settings = {
+    --         pyls = {
+    --             configurationSources = {"pycodestyle", "flake8"},
+    --             plugins = {
+    --                 yapf = {enabled = false},
+    --                 pylint = {enabled = false},
+    --                 pycodestyle = {enabled = false},
+    --                 pyflakes = {enabled = false},
+    --                 pydocstyle = {enabled = false},
+    --                 flake8 = {enabled = false},
+    --                 pyls_mypy = {enabled = true}
+    --             }
+    --         }
+    --     }
+    -- }
+
+    lspconfig.pylsp.setup {
         on_attach = on_attach,
+        cmd = {"pylsp", "--log-file", "/tmp/pyls.log", "--verbose"},
         capabilities = capabilities,
-        flags = {debounce_text_changes = 150}
+        flags = {debounce_text_changes = 150},
+        settings = {
+            pyls = {
+                configurationSources = {"pycodestyle", "flake8"},
+                plugins = {
+                    yapf = {enabled = false},
+                    pylint = {enabled = false},
+                    pycodestyle = {enabled = false},
+                    pyflakes = {enabled = false},
+                    pydocstyle = {enabled = false},
+                    flake8 = {enabled = false},
+                    pyls_mypy = {enabled = true}
+                }
+            }
+        }
     }
-    ]]
 
     -- YAML
     -- https://github.com/redhat-developer/yaml-language-server

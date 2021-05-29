@@ -1,47 +1,58 @@
 local M = {}
 
-function M.config()
-    --[[
+function M.setup()
     vim.g.bufferline = {
         -- Enable/disable animations
         animation = false,
-
+        -- Enable/disable auto-hiding the tab bar when there is a single buffer
         auto_hide = true,
-
-        -- Enable/disable icons
-        -- if set to 'numbers', will show buffer index in the tabline
-        -- if set to 'both', will show buffer index and icons in the tabline
-        icons = true,
-        icon_separator_active = '▎',
-        icon_separator_inactive = ' ',
-        icon_close_tab = '',
-        icon_close_tab_modified = ' ',
-
+        -- Enable/disable current/total tabpages indicator (top right corner)
+        tabpages = true,
         -- Enable/disable close button
-        closable = false,
-
+        closable = true,
         -- Enables/disable clickable tabs
         --  - left-click: go to buffer
         --  - middle-click: delete buffer
         clickable = true,
+        -- Enable/disable icons
+        -- if set to 'numbers', will show buffer index in the tabline
+        -- if set to 'both', will show buffer index and icons in the tabline
+        icons = true,
+        -- Sets the icon's highlight group.
+        -- If false, will use nvim-web-devicons colors
+        icon_custom_colors = false,
+        -- Configure icons on the bufferline.
+        icon_separator_active = '▎',
+        icon_separator_inactive = '▎',
+        icon_close_tab = '',
+        icon_close_tab_modified = ' ',
 
+        -- Sets the maximum padding width with which to surround each tab
+        maximum_padding = 2,
+        -- Sets the maximum buffer name length.
+        maximum_length = 30,
         -- If set, the letters for each buffer in buffer-pick mode will be
         -- assigned based on their name. Otherwise or in case all letters are
         -- already assigned, the behavior is to assign letters in order of
         -- usability (see order below)
         semantic_letters = true,
 
-        -- Sets the maximum padding width with which to surround each tab
-        maximum_padding = 2,
+        -- New buffer letters are assigned in this order. This order is
+        -- optimal for the qwerty keyboard layout but might need adjustement
+        -- for other layouts.
+        letters = "asdfjkl;ghnmxcvbziowerutyqpASDFJKLGHNMXCVBZIOWERUTYQP",
+        no_name_title = 'NO NAME',
     }
-    ]]
-    local opts = { noremap = true, silent = true }
+end
+
+function M.config()
+    local opts = { noremap = true, silent = true, nowait = true }
     -- Move to previous/next
-    vim.api.nvim_set_keymap('n', '<A-[>', '<cmd>BufferPrevious<CR>', opts)
-    vim.api.nvim_set_keymap('n', '<A-]>', '<cmd>BufferPrevious<CR>', opts)
+    vim.api.nvim_set_keymap('n', '<Leader>[', '<cmd>BufferPrevious<CR>', opts)
+    vim.api.nvim_set_keymap('n', '<Leader>]', '<cmd>BufferNext<CR>', opts)
     -- Re-order to previous/next
-    vim.api.nvim_set_keymap('n', '<A-{>', '<cmd>BufferPrevious<CR>', opts)
-    vim.api.nvim_set_keymap('n', '<A-}>', '<cmd>BufferPrevious<CR>', opts)
+    vim.api.nvim_set_keymap('n', '<Leader>{', '<cmd>BufferPrevious<CR>', opts)
+    vim.api.nvim_set_keymap('n', '<Leader>}', '<cmd>BufferNext<CR>', opts)
     -- Goto buffer in position...
     vim.api.nvim_set_keymap('n', '<Leader>1', '<cmd>BufferGoto 1<CR>', opts)
     vim.api.nvim_set_keymap('n', '<Leader>2', '<cmd>BufferGoto 2<CR>', opts)
@@ -59,8 +70,6 @@ function M.config()
 
     -- Magic buffer-picking mode
     vim.api.nvim_set_keymap('n', '<Leader>p', '<cmd>BufferPick<CR>', opts)
-
-
 end
 
 return M

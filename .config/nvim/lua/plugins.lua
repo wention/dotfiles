@@ -111,11 +111,18 @@ return require('packer').startup(function(use)
 
   }
 
+  -- use {
+  --     'simrat39/symbols-outline.nvim',
+  --     cmd = {'SymbolsOutline'},
+  --     setup = require('config/symbols-outline').setup,
+  --     config = require('config/symbols-outline').config
+  -- }
+
   use {
-      'simrat39/symbols-outline.nvim',
-      cmd = {'SymbolsOutline'},
-      setup = require('config/symbols-outline').setup,
-      config = require('config/symbols-outline').config
+      'liuchengxu/vista.vim',
+      cmd = {'Vista'},
+      setup = require('config/vista').setup,
+      config = require('config/vista').config
   }
 
   use {
@@ -255,6 +262,7 @@ return require('packer').startup(function(use)
   use {
       'romgrk/barbar.nvim',
       event = { 'VimEnter' },
+      setup = require('config/barbar').setup,
       config = require('config/barbar').config,
       requires = { 'kyazdani42/nvim-web-devicons', opt = true },
   }

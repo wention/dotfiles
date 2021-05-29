@@ -54,7 +54,7 @@ function M.config()
             staged = '✓',
             unmerged = '',
             renamed = '➜',
-            untracked = '★'
+            untracked = '+'
         },
         folder = {default = '', open = ''}
     }
