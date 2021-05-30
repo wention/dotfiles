@@ -209,6 +209,26 @@ end
 
 init_directories(HOME_DIR, 'nvim')
 
+-----------------------------------------------------------------------------//
+-- Terminal
+-----------------------------------------------------------------------------//
+
+-----------------------------------------------------------------------------//
+-- Open a terminal pane on the right using :Term
+vim.cmd [[command Term :botright vsplit term://$SHELL]]
+
+-- Terminal visual tweaks
+-- Enter insert mode when switching to terminal
+-- Close terminal buffer on process exit
+vim.cmd [[
+	autocmd TermOpen * setlocal listchars= nonumber norelativenumber nocursorline
+	autocmd TermOpen * startinsert
+	autocmd BufEnter,BufWinEnter,WinEnter term://* startinsert
+	autocmd BufLeave term://* stopinsert
+	autocmd TermClose term://* call nvim_input('<CR>')
+	autocmd TermClose * call feedkeys("i")
+]]
+
 
 -----------------------------------------------------------------------------//
 -- FileTypes

@@ -123,7 +123,7 @@ end
 
 local LspStatus = function()
     if #vim.lsp.get_active_clients() > 0 then
-        return require'lsp-status'.status()
+        return require('lsp-status').status()
     end
     return ''
 end
