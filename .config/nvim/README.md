@@ -9,8 +9,8 @@ Neovim configuration write in lua
 For LSP:
 
 ```
-# Python - pyls
-pip3 install 'python-language-server[all]'
+# Python - pylsp
+pip3 install install 'python-lsp-server[all]'
 
 # Python - pyright
 npm install -g pyright
