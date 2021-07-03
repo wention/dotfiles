@@ -246,7 +246,6 @@ return require('packer').startup(function(use)
   use {
       'lukas-reineke/indent-blankline.nvim',
       opt = true,
-      branch = 'lua',
       event = {'VimEnter'},
       setup = require('config/indent_blankline').setup,
   }
