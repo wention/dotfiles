@@ -16,6 +16,7 @@ pip3 install install 'python-lsp-server[all]'
 npm install -g pyright
 
 # TypeScript
+npm install -g typescript typescript-language-server
 
 # C / C++ - clangd
 #clangd
