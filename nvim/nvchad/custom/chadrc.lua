@@ -18,8 +18,6 @@ M.plugins = {
   },
 }
 
-M.mappings = {}
-
 M.mappings.plugins = {
    nvimtree = {
       toggle = "<leader>e",
