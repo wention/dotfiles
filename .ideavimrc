@@ -1,0 +1,68 @@
+let mapleader = ','
+
+set ignorecase
+set smartcase
+
+" Copy to system clipboard as well
+set clipboard+=unnamed
+
+" Use Idea to join lines smartly
+set ideajoin
+
+" Multiple cursors support
+set multiple-cursors
+
+set NERDTree
+set hlsearch
+set showmode
+set scrolloff=5
+set history=1000
+set surround
+set incsearch
+set relativenumber
+set number
+set smartcase
+set hlsearch
+set visualbell
+set noerrorbells
+set easymotion
+set commentary
+set exchange
+set sneak
+
+" clear the search buffer when hitting return
+ nnoremap <Leader>/ :nohlsearch<cr>
+
+ " Quick window navigation
+map <C-J> <C-W>j
+map <C-K> <C-W>k
+map <C-L> <C-W>l
+map <C-H> <C-W>h
+
+
+" Greatest remap EVER!! 
+" Let me explain, this remap while in visiual mode
+" will delete what is currently highlighted and replace it 
+" with what is in the register BUT it will YANK (delete) it 
+" to a VOID register. Meaning I still have what I originally had
+" when I pasted. I don't loose the previous thing I YANKED!
+vnoremap <leader>p "_dP
+
+" Closing tabs
+nnoremap <leader>q :action CloseContent<cr>
+nnoremap <leader>Q :action ReopenClosedTab<cr>
+
+" Navigation
+nnoremap <C-O> :action Back<cr>
+nnoremap <C-I> :action Forward<cr>
+nnoremap gd :action GotoImplementation<cr>
+nnoremap gu :action FindUsages<cr>
+nnoremap gC :action CallHierarchy<cr>
+
+nnoremap <leader><space> :action GotoAction<cr>
+
+" Coding Formating
+nnoremap <leader>cf :action ReformatCode<CR>
+
+nmap <Leader>cc :action CommentByLineComment<CR>
+vmap <Leader>cc :action CommentByBlockComment<CR>
