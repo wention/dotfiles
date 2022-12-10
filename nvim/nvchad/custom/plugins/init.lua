@@ -1,4 +1,8 @@
 return {
-  { "williamboman/nvim-lsp-installer" },
-  { "simrat39/symbols-outline.nvim" },
+  -- Override plugin config
+  ["williamboman/mason.nvim"] = {
+    override_options = {
+          ensure_installed = { "html-lsp", "clangd" }
+      }
+  },
 }

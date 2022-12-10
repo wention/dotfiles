@@ -1,28 +1,10 @@
 local M = {}
-local userPlugins = require "custom.plugins"
 
-M.options = {
-   mapleader = ",",
-   tabstop = 4,
+M.ui = {
+  theme = "onedark",
 }
 
-M.ui = {}
-
-M.plugins = {
-  install = userPlugins,
-
-  options = {
-    lspconfig = {
-      setup_lspconf = "custom.plugins.lspconfig",
-    },
-  },
-}
-
-M.mappings.plugins = {
-   nvimtree = {
-      toggle = "<leader>e",
-      focus = "",
-   },
-}
+M.plugins = require "custom.plugins"
+M.mappings = require "custom.mappings"
 
 return M
