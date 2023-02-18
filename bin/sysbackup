@@ -1,0 +1,66 @@
+#!/bin/bash
+# full system backup
+
+# Backup destination
+backup_dest=/home/wention/Backups/
+backup_src=/
+
+
+cd $backup_src
+
+# Labels for backup name
+hostname=$(cat etc/hostname)
+distro=manjaro
+type=sys
+date=$(date "+%F")
+backupfile="$backup_dest/$hostname-$distro-$type-$date.tar.gz"
+
+# backup
+sys_backup() {
+  exclude_file=$(mktemp /tmp/sysbackup_exclude_file.XXXXXX)
+cat >> $exclude_file << EOF
+dev/*
+run/*
+sys/*
+proc/*
+var/cache/*
+var/log/*
+tmp/*
+home/wention/.cache
+EOF
+
+
+  # -p, --acls and --xattrs store all permissions, ACLs and extended attributes. 
+  # Without both of these, many programs will stop working!
+  # It is safe to remove the verbose (-v) flag. If you are using a 
+  # slow terminal, this can greatly speed up the backup process.
+
+  tar --exclude-from=$exclude_file --acls --xattrs -cpvf - `ls -A -Ihome` `ls -d home/wention/.??*` | pv | pigz > $backupfile
+
+  rm -f $exclude_file
+}
+
+
+home_backup() {
+  exclude_file=$(tempfile /tmp/sysbackup_exclude_file.XXXXXX)
+cat >> $exclude_file << EOF
+home/wention/.*
+EOF
+
+
+  tar --exclude-from=$exclude_file --acls --xattrs -cpf - home | pv | pigz > $backupfile
+
+  rm -f $exclude_file
+}
+
+
+echo "backup to ${backupfile}"
+echo -n "Is this a good question (y/n)? "
+read n
+sys_backup
+
+
+# restore
+
+
+
