@@ -11,11 +11,11 @@ M.treesitter = {
     "bash",
 
     -- web dev
-    -- "html",
-    -- "css",
-    -- "javascript",
-    -- "tsx",
-    -- "typescript",
+    "html",
+    "css",
+    "javascript",
+    "tsx",
+    "typescript",
 
     -- lua stuff
     "lua",
