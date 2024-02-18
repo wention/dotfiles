@@ -66,3 +66,10 @@ nnoremap <leader>cf :action ReformatCode<CR>
 
 nmap <Leader>cc :action CommentByLineComment<CR>
 vmap <Leader>cc :action CommentByBlockComment<CR>
+
+map <leader>r <Action>(RenameElement)
+
+" Debug
+map <leader>d <Action>(Debug)
+map <leader>b <Action>(ToggleLineBreakpoint)
+map <leader>s <Action>(Stop)
