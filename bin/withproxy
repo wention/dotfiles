@@ -1,0 +1,14 @@
+#!/bin/sh
+
+export http_proxy=http://127.0.0.1:7890
+export https_proxy=http://127.0.0.1:7890
+export all_proxy=socks5://127.0.0.1:7890
+#export no_proxy=
+
+HTTP_PROXY=$http_proxy
+HTTPS_PROXY=$https_proxy
+ALL_PROXY=$all_proxy
+
+export HTTP_PROXY HTTPS_PROXY ALL_PROXY
+
+exec $@
