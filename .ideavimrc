@@ -4,7 +4,7 @@ set ignorecase
 set smartcase
 
 " Copy to system clipboard as well
-set clipboard+=unnamed
+set clipboard+=unnamedplus
 
 " Use Idea to join lines smartly
 set ideajoin
